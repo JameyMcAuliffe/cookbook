@@ -10,12 +10,11 @@ const app = express()
 const port = process.env.PORT || 3000
 app.set('port', port)
 
-// app.get('/', function (req, res) {
-//   res.send('Cookbook')
-// })
 
 //View Engine
+//sets view engine to ejs
 app.set('view engine', 'ejs')
+//specifies folder for views
 app.set('views', path.join(__dirname, 'views'))
 
 //Body Parser Middleware
@@ -24,6 +23,10 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 //Set Static Path
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.get('/', function (req, res) {
+  res.render('index')
+})
 
 
 
